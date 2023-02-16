@@ -8,20 +8,49 @@ namespace CarLotSimulator
 {
     public class Car
     {
+        private int v1;
+        private string v2;
+        private string v3;
+
+        public Car() 
+        {
+            CarLot.numberOfCars++;
+        }
+        public Car(int v1, string v2, string v3)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+        }
+
+        public Car(int year, string make, string model, string engineNoise, string honkNoise, bool isDrivable)
+        {
+            Year = year;
+            Make = make;
+            Model = model;
+            EngineNoise = engineNoise;
+            HonkNoise = honkNoise;
+            IsDrivable = isDrivable;
+
+            CarLot.numberOfCars++;
+        }
+
         public int Year { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public string EngineNoise { get; set; }
+        public string HonkNoise { get; set; }
         public bool IsDrivable { get; set; }
 
-        Car() 
+        public void MakeEngineNoise(string noise)
         {
-             
+            Console.WriteLine($"the {Make}'s engine goes {noise}");
         }
 
+        public void MakeHonkNoise(string noise)
+        {
+            Console.WriteLine($"the {Make}'s horn sounds like {noise}");
+        }
 
-
-        //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
-        //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
     }
 }
